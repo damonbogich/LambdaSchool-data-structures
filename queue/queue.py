@@ -32,11 +32,11 @@ class Node:
         self.next_node = new_next
 
 class LinkedList:
-    def __init__(self):
+    def __init__(self, head=None, tail=None):
         # reference to the head of the list
-        self.head = None
+        self.head = head
         # reference to the tail of the list
-        self.tail = None
+        self.tail = tail
 
     def add_to_tail(self, value):
         # wrap the input value in a node
@@ -134,40 +134,46 @@ class LinkedList:
             current = current.get_next()
         return max_value
 
-# Array underlying storage structure:
-class Queue:
-    def __init__(self, storage=None):
+#Linked list implementation as underlying storage structure
+# I think queue will be subclass of LinkedList?
+class Queue():
+    #Storage?
+    def __init__(self, size=None, storage=None):
         self.size = 0
-        if storage is None:
-            self.storage = []
-
-    #Gets length of collection
+        self.storage = LinkedList()
+        super().__init__(head, tail)
+    #Find length of linkedlist
     def __len__(self):
-        return len(self.storage) #length of queue
-
-    #Adds to queue (end of queue)
+        pass
+    #add to the end of linked list 
     def enqueue(self, value):
-        return self.storage.append(value)
-
-    #Remove from queue (first item)
+        if
+        self.add_to_tail(value)
+    #Take away first item from queue
     def dequeue(self):
-        if self.storage != []:
-            return self.storage.pop(0)
-        else: 
-            return None
+        pass
 
 
 
+
+# Array underlying storage structure:
 # class Queue:
-#     def __init__(self):
+#     def __init__(self, storage=None):
 #         self.size = 0
-#         # self.storage = ?
-    
+#         if storage is None:
+#             self.storage = []
+
+#     #Gets length of collection
 #     def __len__(self):
-#         pass
+#         return len(self.storage) #length of queue
 
+#     #Adds to queue (end of queue)
 #     def enqueue(self, value):
-#         pass
+#         return self.storage.append(value)
 
+#     #Remove from queue (first item)
 #     def dequeue(self):
-#         pass
+#         if self.storage != []:
+#             return self.storage.pop(0)
+#         else: 
+#             return None
