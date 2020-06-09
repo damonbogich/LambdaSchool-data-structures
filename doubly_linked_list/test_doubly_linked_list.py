@@ -47,12 +47,10 @@ class DoublyLinkedListTests(unittest.TestCase):
     def test_list_add_to_tail(self):
         self.assertEqual(self.dll.tail.value, 1)
         self.assertEqual(len(self.dll), 1)
-
         self.dll.add_to_tail(30)
         self.assertEqual(self.dll.tail.prev.value, 1)
         self.assertEqual(self.dll.tail.value, 30)
         self.assertEqual(len(self.dll), 2)
-
         self.dll.add_to_tail(20)
         self.assertEqual(self.dll.tail.prev.value, 30)
         self.assertEqual(self.dll.tail.value, 20)
