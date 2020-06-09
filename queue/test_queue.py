@@ -29,6 +29,7 @@ class QueueTests(unittest.TestCase):
 
     def test_dequeue_respects_order(self):
         self.q.enqueue(100)
+        print('hereeeee', self.q.storage)
         self.q.enqueue(101)
         self.q.enqueue(105)
         self.assertEqual(self.q.dequeue(), 100)

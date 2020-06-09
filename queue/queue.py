@@ -141,17 +141,20 @@ class Queue():
     def __init__(self, size=None, storage=None):
         self.size = 0
         self.storage = LinkedList()
-        super().__init__(head, tail)
     #Find length of linkedlist
     def __len__(self):
-        pass
-    #add to the end of linked list 
+        current = self.storage.head
+        length = 0
+        while current:
+            length = length + 1
+            current = current.next_node
+        return length
+    #add to the end of linked list (tail)
     def enqueue(self, value):
-        if
-        self.add_to_tail(value)
+        return self.storage.add_to_tail(value)
     #Take away first item from queue
     def dequeue(self):
-        pass
+        return self.storage.remove_head()
 
 
 
