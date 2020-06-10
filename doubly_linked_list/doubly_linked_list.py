@@ -197,9 +197,14 @@ class DoublyLinkedList:
             self.tail.prev = self.head
             self.tail.next = None
         else:
-            self.delete(node)
-            self.add_to_tail(node.value)
-            self.length -= 1
+            node.prev.next = node.next
+            node.next.prev = node.prev
+
+            current_tail = self.tail
+            self.tail = node
+            self.tail.prev = current_tail
+            self.tail.next = None
+            current_tail.next = self.tail
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
