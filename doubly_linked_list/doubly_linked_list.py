@@ -145,6 +145,7 @@ class DoublyLinkedList:
     #head.prev =None head.next = node head.value = value
     #tail.next = head head.prev = tail 
     def move_to_front(self, node):
+        # node = ListNode(value) <= why does that not work????
         if not self.head and self.tail:
             return None
         elif self.head == self.tail:
@@ -160,10 +161,18 @@ class DoublyLinkedList:
             self.tail.prev = self.head
             self.tail.next = None
         else:
-            current_head = self.head
-            current_tail = self.tail
-#use node param!
-            self.head.insert_before(node.value)
+            #why does delete have an argument now and why do I need to decrement?
+            self.delete(node)
+            self.add_to_head(node.value)
+            self.length -= 1
+
+            
+
+
+
+            
+
+
 
 
     """Removes the input node from its current spot in the 
