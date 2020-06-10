@@ -209,7 +209,7 @@ class DoublyLinkedList:
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        if not self.head and self.tail:
+        if self.head is None and self.tail is None:
             return None
         elif self.head == self.tail:
             self.head = None
@@ -219,15 +219,17 @@ class DoublyLinkedList:
             current_head = self.head
             self.head = current_head.next
             self.head.prev = None
-            self.length -=1
+            self.length -= 1
         elif self.tail is node:
             current_tail = self.tail
             self.tail = current_tail.prev
             self.tail.next = None
-            self.length =-1
+            self.length -= 1
         else:
-            self.delete(node)
-            #why does node get passed into this function?
+            # self.delete(node)
+            node.delete()
+            self.length -= 1
+            #why no decrement within this block????
 
         
     """Returns the highest value currently in the list"""

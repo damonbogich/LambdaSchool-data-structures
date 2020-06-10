@@ -12,25 +12,78 @@ This part of the project comprises two days:
 class BSTNode:
     def __init__(self, value):
         self.value = value
+        #left and right pointer
         self.left = None
         self.right = None
-
+        
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        if value < self.value:
+            if self.left is None:
+                self.left = BSTNode(value)
+            else:
+                self.left.insert(value)
+        if value > self.value:
+            if self.right is None:
+                self.right = BSTNode(value)
+            else: 
+                self.right.insert(value)
+        if value == self.value:
+            self.right = BSTNode(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if target == self.value:
+            return True
+        if target > self.value:
+            if not self.right:
+                return False
+            elif target == self.right:
+                return True
+            else:
+                return self.right.contains(target)
+        if target < self.value:
+            if not self.left:
+                return False
+            elif target == self.left:
+                return True
+            else:
+                return self.left.contains(target)
+            
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        if not self.right:
+            return self.value
+        else:
+            return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        #always will call function of self.value
+        ##base case:
+        if self.right is None and self.left is None:
+            fn(self.value)
+        #if self.right.value is not None it will call it there
+        else:
+            if self.right.value is not None and self.left.value is None:
+                fn(self.value)
+                fn(self.right.value)
+                return self.right.value.for_each(fn)
+            elif self.left.value is not None and self.left.value is None:
+                fn(self.value)
+                fn(self.left.value)
+                return self.left.value.for_each(fn)
+            # Both self.left and self.right are truthy????
+            else: 
+                fn(self.value)
+                fn(self.left.value)
+                fn(self.right.value)
+
+            
+        
+            
 
     # Part 2 -----------------------
 
