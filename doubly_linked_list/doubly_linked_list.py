@@ -161,10 +161,21 @@ class DoublyLinkedList:
             self.tail.prev = self.head
             self.tail.next = None
         else:
-            #why does delete have an argument now and why do I need to decrement?
-            self.delete(node)
-            self.add_to_head(node.value)
-            self.length -= 1
+            ##removes node from current place in list:
+            node.prev.next = node.next
+            node.next.prev = node.prev
+            ## puts node in front of list:
+            #set current_head (before insertion)
+            current_head = self.head
+            #setting new node to head
+            self.head = node
+            current_head.prev = self.head
+            self.head.prev = None
+            self.head.next = current_head
+
+
+
+
 
             
     """Removes the input node from its current spot in the 
