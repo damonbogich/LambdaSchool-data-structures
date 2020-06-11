@@ -51,7 +51,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(v3)
         self.bst.insert(v4)
         self.bst.insert(v5)
-
+        # print('here', self.bst.right.left.value)
         self.bst.for_each(cb)
 
         self.assertTrue(5 in arr)

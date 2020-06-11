@@ -62,26 +62,18 @@ class BSTNode:
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         #always will call function of self.value
-        ##base case:
+        ##base case: fn(self.value) is called and function ends
+        fn(self.value)
         if self.right is None and self.left is None:
-            fn(self.value)
-        #if self.right.value is not None it will call it there
-        else:
-            if self.right.value is not None and self.left.value is None:
-                fn(self.value)
-                fn(self.right.value)
-                return self.right.value.for_each(fn)
-            elif self.left.value is not None and self.left.value is None:
-                fn(self.value)
-                fn(self.left.value)
-                return self.left.value.for_each(fn)
-            # Both self.left and self.right are truthy????
-            else: 
-                fn(self.value)
-                fn(self.left.value)
-                fn(self.right.value)
+            return None
 
-            
+        if self.right is not None and self.left is None:
+            self.right.for_each(fn)
+        if self.left is not None and self.right is None:
+            self.left.for_each(fn)
+        if self.left is not None and self.right is not None:
+            self.left.for_each(fn)
+            self.right.for_each(fn)   
         
             
 
